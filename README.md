@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mental Filter PWA
 
-## Getting Started
+Next.js 14 Progressive Web Application with TypeScript, Tailwind CSS, and comprehensive testing setup.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **PWA:** next-pwa
+- **Testing:** Playwright (E2E)
+- **Code Quality:** ESLint + Prettier
+
+## 📱 PWA Features
+
+- Standalone display mode optimized for iPhone
+- Theme color: `#FDFCFA`
+- Apple touch icon support
+- Offline support with service worker
+- Installable on iOS and Android devices
+
+## 🛠️ Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 🧪 Testing
 
-To learn more about Next.js, take a look at the following resources:
+### E2E Tests with Playwright
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Run tests
+npm run test:e2e
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Run tests in UI mode
+npm run test:e2e:ui
 
-## Deploy on Vercel
+# Show test report
+npm run test:e2e:report
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💅 Code Formatting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Format all files
+npm run format
+
+# Check formatting
+npm run format:check
+
+# Lint code
+npm run lint
+```
+
+## 🎨 PWA Icons
+
+**Important:** Replace the placeholder icon files with actual PNG images:
+
+- `/public/icon-192x192.png` - 192x192px icon
+- `/public/icon-512x512.png` - 512x512px icon
+- `/public/apple-touch-icon.png` - 180x180px icon for iOS
+
+You can use tools like:
+
+- [PWA Asset Generator](https://github.com/elegantapp/pwa-asset-generator)
+- [RealFaviconGenerator](https://realfavicongenerator.net/)
+- Or create them manually with image editing software
+
+## 📂 Project Structure
+
+```
+├── app/                # Next.js App Router pages
+├── e2e/                # Playwright E2E tests
+├── public/             # Static assets and PWA icons
+├── next.config.mjs     # Next.js + PWA configuration
+├── playwright.config.ts # Playwright configuration
+├── tailwind.config.ts  # Tailwind CSS configuration
+└── tsconfig.json       # TypeScript configuration
+```
+
+## 📝 Configuration Files
+
+- `.eslintrc.json` - ESLint rules with Prettier integration
+- `.prettierrc` - Prettier formatting rules
+- `manifest.json` - PWA manifest for installability
+- `playwright.config.ts` - E2E test configuration
+
+## 🌐 PWA Testing
+
+To test PWA features:
+
+1. Build the production version: `npm run build`
+2. Start the production server: `npm start`
+3. Open in browser and check:
+   - Chrome DevTools > Application > Manifest
+   - Chrome DevTools > Application > Service Workers
+   - Install prompt on supported devices
+
+## 📱 iOS Testing
+
+For iPhone PWA testing:
+
+1. Deploy to a server with HTTPS
+2. Open in Safari on iOS
+3. Tap Share button → "Add to Home Screen"
+4. Launch from home screen to see standalone mode
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [next-pwa Documentation](https://github.com/shadowwalker/next-pwa)
+- [Playwright Documentation](https://playwright.dev/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## 🚀 Deploy
+
+Deploy on [Vercel](https://vercel.com) (recommended for Next.js):
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+PWA features work best with HTTPS in production.
