@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import ThemeManager from '@/components/ThemeManager';
+import PushPrompt from '@/components/PushPrompt';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="sk">
       <body>
         <ThemeManager />
+        <PushPrompt />
         {children}
       </body>
     </html>

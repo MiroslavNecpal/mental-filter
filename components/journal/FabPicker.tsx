@@ -21,15 +21,13 @@ export default function FabPicker({ open, onPick, onClose }: FabPickerProps) {
           className="fab-pick-btn fab-pick-good"
           onClick={() => onPick('good')}
         >
-          <span className="fab-pick-dot dot-good-solid" />
-          Zvládol som
+          Podarilo sa
         </button>
         <button
           className="fab-pick-btn fab-pick-bad"
           onClick={() => onPick('bad')}
         >
-          <span className="fab-pick-dot dot-bad-solid" />
-          Na budúce
+          Príležitosť
         </button>
         <button className="fab-pick-cancel" onClick={onClose}>
           Zrušiť

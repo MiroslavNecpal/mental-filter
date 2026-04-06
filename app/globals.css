@@ -782,3 +782,90 @@ body {
 .delete-btn-confirm:active {
   opacity: 0.8;
 }
+
+/* ── Push notification prompt ── */
+.push-prompt-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--backdrop-opacity);
+  z-index: 200;
+  animation: fadeIn 0.2s forwards;
+}
+
+.push-prompt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 201;
+  background: var(--color-bg-secondary);
+  border-radius: 20px 20px 0 0;
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.25s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.push-prompt-body {
+  padding: 28px 21px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.push-prompt-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.push-prompt-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.push-prompt-cancel {
+  flex: 1;
+  background: var(--color-button-secondary);
+  color: var(--color-text-primary);
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  min-height: 52px;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.push-prompt-cancel:active { opacity: 0.7; }
+.push-prompt-cancel:disabled { opacity: 0.4; cursor: default; }
+
+.push-prompt-confirm {
+  flex: 1;
+  background: var(--color-fab);
+  color: #fff;
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 52px;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  box-shadow: var(--shadow-lg);
+  -webkit-tap-highlight-color: transparent;
+}
+.push-prompt-confirm:active { opacity: 0.85; }
+.push-prompt-confirm:disabled { opacity: 0.5; cursor: default; }
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
