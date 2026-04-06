@@ -65,6 +65,28 @@ test.describe('PWA - Manifest and Configuration', () => {
     expect(content).toBe('#FDFCFA');
   });
 
+  test('should have dynamic theme-color meta tag', async ({ page }) => {
+    // Test light mode
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto('/');
+
+    let themeColor = await page.evaluate(() => {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      return meta?.getAttribute('content');
+    });
+    expect(themeColor).toBe('#fdfcfa');
+
+    // Test dark mode
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.waitForTimeout(100);
+
+    themeColor = await page.evaluate(() => {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      return meta?.getAttribute('content');
+    });
+    expect(themeColor).toBe('#1c1c1e');
+  });
+
   test('should have viewport meta tag configured', async ({ page }) => {
     await page.goto('/');
 

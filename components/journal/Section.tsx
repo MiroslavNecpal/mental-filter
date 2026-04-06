@@ -5,7 +5,6 @@ import ItemRow from './ItemRow';
 
 interface SectionProps {
   title: string;
-  dotClass: string;
   variant: 'good' | 'bad';
   items: JournalItem[];
   onDeleteRequest: (item: JournalItem) => void;
@@ -15,7 +14,6 @@ interface SectionProps {
 
 export default function Section({
   title,
-  dotClass,
   variant,
   items,
   onDeleteRequest,
@@ -26,10 +24,7 @@ export default function Section({
 
   return (
     <div className="section">
-      <div className="section-label">
-        <span className={`section-dot ${dotClass}`} />
-        {title}
-      </div>
+      <div className={`section-label section-label-${variant}`}>{title}</div>
       <div className="section-card">
         {items.length === 0 ? (
           <p className="item-empty">Žiadny záznam</p>

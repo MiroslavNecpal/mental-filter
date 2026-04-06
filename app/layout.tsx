@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import ThemeManager from '@/components/ThemeManager';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#FDFCFA',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fdfcfa' },
+    { media: '(prefers-color-scheme: dark)', color: '#1c1c1e' },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -36,7 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body>{children}</body>
+      <body>
+        <ThemeManager />
+        {children}
+      </body>
     </html>
   );
 }

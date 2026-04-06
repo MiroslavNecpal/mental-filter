@@ -4,9 +4,14 @@ import { Page, expect } from '@playwright/test';
  * Clear all localStorage data
  */
 export async function clearStorage(page: Page) {
-  await page.evaluate(() => {
-    localStorage.clear();
-  });
+  try {
+    await page.evaluate(() => {
+      localStorage.clear();
+    });
+  } catch (error) {
+    // If the page hasn't been navigated yet, the error is expected
+    // and we can safely ignore it
+  }
 }
 
 /**

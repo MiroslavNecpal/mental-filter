@@ -45,8 +45,6 @@ export default function AddDrawer({
     onClose();
   };
 
-  const isGood = section === 'good';
-
   return (
     <>
       <div
@@ -55,17 +53,6 @@ export default function AddDrawer({
       />
       <div className={`drawer ${open ? 'open' : ''}`} role="dialog">
         <div className="drawer-handle" />
-        <div className="drawer-header">
-          <div className="drawer-title">
-            <span
-              className={`drawer-dot ${isGood ? 'dot-good-solid' : 'dot-bad-solid'}`}
-            />
-            {isGood ? 'Zvládol som' : 'Na budúce'}
-          </div>
-          <button className="drawer-close" onClick={onClose}>
-            ✕
-          </button>
-        </div>
 
         {photo && (
           <div className="drawer-photo-preview">
@@ -80,17 +67,16 @@ export default function AddDrawer({
           </div>
         )}
 
-        <textarea
-          ref={inputRef}
-          className="drawer-textarea"
-          value={val}
-          onChange={e => setVal(e.target.value)}
-          placeholder="Napíš záznam…"
-          rows={4}
-          maxLength={300}
-        />
-
-        <div className="drawer-actions">
+        <div className="drawer-textarea-wrapper">
+          <textarea
+            ref={inputRef}
+            className="drawer-textarea"
+            value={val}
+            onChange={e => setVal(e.target.value)}
+            placeholder="Napíš záznam…"
+            rows={4}
+            maxLength={300}
+          />
           <button
             className="drawer-photo-btn"
             onClick={() => fileRef.current?.click()}
@@ -108,7 +94,7 @@ export default function AddDrawer({
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
               <circle cx="12" cy="13" r="4" />
             </svg>
-            {photo ? 'Zmeniť' : 'Fotka'}
+            {photo ? 'Zmeniť fotku' : 'Pridať fotku'}
           </button>
           <input
             type="file"
@@ -117,6 +103,12 @@ export default function AddDrawer({
             style={{ display: 'none' }}
             onChange={handleFile}
           />
+        </div>
+
+        <div className="drawer-actions">
+          <button className="drawer-cancel" onClick={onClose}>
+            Zrušiť
+          </button>
           <button
             className="drawer-submit"
             onClick={submit}

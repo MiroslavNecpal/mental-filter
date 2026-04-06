@@ -139,18 +139,17 @@ export default function Journal() {
               <div className="summary-row">
                 <div className="summary-card summary-card-good">
                   <span className="summary-count">{goodCount}</span>
-                  <span className="summary-label">zvládol som</span>
+                  <span className="summary-label">podarilo sa</span>
                 </div>
                 <div className="summary-card summary-card-bad">
                   <span className="summary-count">{badCount}</span>
-                  <span className="summary-label">nezvládol som</span>
+                  <span className="summary-label">príležitosť</span>
                 </div>
               </div>
 
               {/* Sections */}
               <Section
-                title="Zvládol som"
-                dotClass="dot-good-solid"
+                title="Podarilo sa"
                 variant="good"
                 items={entry.good || []}
                 editable={editable}
@@ -160,8 +159,7 @@ export default function Journal() {
                 onLightbox={setLightbox}
               />
               <Section
-                title="Nezvládol som"
-                dotClass="dot-bad-solid"
+                title="Príležitosť"
                 variant="bad"
                 items={entry.bad || []}
                 editable={editable}
